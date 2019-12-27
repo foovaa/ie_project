@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1 style="margin: 10px;">Employees</h1>
+  <br>
+
+  <div class="m-10">
+    <form method="POST">
+      {% csrf_token %}
+      {{ form }}
+      <input type="submit" class="btn btn-primary" style="margin-left: 40px;" value="filter"> 
+    </form>
+  </div><br>
+  {% if employees %}
+    <table class="table table-dark mt-3">
+      <thead>
+          <tr>
+            <th scope="col" style="color: aquamarine;">#</th>
+            <th scope="col" style="color: aquamarine;">Name</th>
+            <th scope="col" style="color: aquamarine;">Last name</th>
+            <th scope="col" style="color: aquamarine;">Personal id</th>
+            <th scope="col" style="color: aquamarine;">age</th>
+            <th scope="col" style="color: aquamarine;">is married</th>
+            <th scope="col" style="color: aquamarine;">Gender</th>
+            <th scope="col" style="color: aquamarine;">Tele</th>
+          </tr>
+        </thead>
+        {% for emp in employees %}
+          <tr>
+            <th scope="col">{{ forloop.counter }}</th>
+            <th scope="col">{{ emp.name }}</th>
+            <th scope="col">{{ emp.last_name }}</th>
+            <th scope="col">{{ emp.personal_id }}</th>
+            <th scope="col">{{ emp.age }}</th>
+            <th scope="col">{{ emp.is_married }}</th>
+            <th scope="col">{{ emp.gender }}</th>
+            <th scope="col">{{ emp.tele }}</th>
+          </tr>
+        {% endfor %}
+    </table>
+  {% else %}
+    <p>there is no employee</p>
+  {% endif %}
+  {% endblock %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Status of Employees</h2>
+    <p>Employees NO. {{ all }}</p>
+    <p>Married Employees NO. {{ married }}</p>
+    <p>Employees with salary more than 10000 NO. {{ bigger_than_10000 }}</p>
+    <p><b>{{ top.name }}</b> gets most salary <b>{{ top.salary }}$</b></p>
+    <p><b>{{ lowest.name }}</b> gets lowest salary <b>{{ lowest.salary }}$</b></p>
+{% endblock content %}
